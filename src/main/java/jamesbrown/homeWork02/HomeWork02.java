@@ -1,4 +1,4 @@
-package james.brown.homeWork02;
+package jamesbrown.homeWork02;
 
 /**
  * Created by Konstantin.Malov on 30.01.2017.
