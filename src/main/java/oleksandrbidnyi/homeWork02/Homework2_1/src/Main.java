@@ -1,3 +1,5 @@
+package oleksandrbidnyi.homeWork02.Homework2_1.src;
+
 public class Main {
 
     public static void main(String[] args) {

@@ -1,3 +1,5 @@
+package oleksandrbidnyi.homeWork02.Homework2_4.src;
+
 public class Main {
     public static void main(String[] args) {
         String[] ownerNames = {"Jane", "Ann", "Jack", "Oww", "Lane"};

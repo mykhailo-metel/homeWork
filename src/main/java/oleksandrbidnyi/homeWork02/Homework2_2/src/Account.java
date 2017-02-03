@@ -1,3 +1,5 @@
+package oleksandrbidnyi.homeWork02.Homework2_2.src;
+
 public class Account {
 
     private double balance;
