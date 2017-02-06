@@ -44,8 +44,9 @@ public class ArrayKeeper {
             throw new IllegalArgumentException("The array is empty");
         }
         int result = array[0]; //первый элемент массива - первый кандидат в минимальные значения
-        for (int i = 0; i < array.length; i++) { //не хотел писать првоерку длины массива, решил, что двойная проверка первого
-                                                //элемента - меньшее зло.
+        for (int i = 0; i < array.length; i++) {
+            /*не хотел писать првоерку длины массива, решил, что двойная проверка
+            первого элемента - меньшее зло.*/
             if (array[i] < result) {
                 result = array[i]; //присваиваем result значение array[i], если array[i]<result
             }
@@ -58,8 +59,9 @@ public class ArrayKeeper {
             throw new IllegalArgumentException("The array is empty");
         }
         double result = array[0]; //первый элемент массива - первый кандидат в минимальные значения
-        for (int i = 0; i < array.length; i++) { //не хотел писать првоерку длины массива, решил, что двойная проверка первого
-            //элемента - меньшее зло.
+        for (int i = 0; i < array.length; i++) {
+            /*не хотел писать првоерку длины массива, решил, что двойная проверка
+            первого элемента - меньшее зло.*/
             if (array[i] < result) {
                 result = array[i]; //присваиваем result значение array[i], если array[i]<result
             }
@@ -77,8 +79,9 @@ public class ArrayKeeper {
             throw new IllegalArgumentException("The array is empty");
         }
         int result = array[0]; //первый элемент массива - первый кандидат в максимальные значения
-        for (int i = 0; i < array.length; i++) { //не хотел писать првоерку длины массива, решил, что двойная проверка первого
-            //элемента - меньшее зло.
+        for (int i = 0; i < array.length; i++) {
+            /*не хотел писать првоерку длины массива, решил, что двойная проверка
+            первого элемента - меньшее зло.*/
             if (array[i] > result) {
                 result = array[i]; //присваиваем result значение array[i], если array[i]>result
             }
@@ -91,8 +94,9 @@ public class ArrayKeeper {
             throw new IllegalArgumentException("The array is empty");
         }
         double result = array[0]; //первый элемент массива - первый кандидат в максимальные значения
-        for (int i = 0; i < array.length; i++) { //не хотел писать првоерку длины массива, решил, что двойная проверка первого
-            //элемента - меньшее зло.
+        for (int i = 0; i < array.length; i++) {
+            /*не хотел писать првоерку длины массива, решил, что двойная проверка
+            первого элемента - меньшее зло.*/
             if (array[i] > result) {
                 result = array[i]; //присваиваем result значение array[i], если array[i]>result
             }
