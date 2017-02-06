@@ -11,9 +11,9 @@ public class ArrayKeeper {
     public long sum(int[] array) {
         long result = 0;
         for (int elt : array) {
-            if (Long.MAX_VALUE - result < elt) { //Нужно удостовериться, что сумма не выйдет за пределы long
+            if (Long.MAX_VALUE - result < elt) {
                 throw new IllegalArgumentException("Sum is out of Long bounds!");
-            } else //Если выйдет, бросить исключение
+            } else
             {
                 result += elt;
             }
@@ -24,9 +24,9 @@ public class ArrayKeeper {
     public double sum(double[] array) {
         double result = 0;
         for (double elt : array) {
-            if (Double.MAX_VALUE - result < elt) { //Нужно удостовериться, что сумма не выйдет за пределы double
+            if (Double.MAX_VALUE - result < elt) {
                 throw new IllegalArgumentException("Sum is out of Double bounds!");
-            } else //Если выйдет, бросить исключение
+            } else
             {
                 result += elt;
             }
@@ -40,30 +40,26 @@ public class ArrayKeeper {
     метод возвращал null, но не вижу другого способа показать, что введен неверный аргумент.
      */
     public int min(int[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
-        int result = array[0]; //первый элемент массива - первый кандидат в минимальные значения
+        int result = array[0];
         for (int i = 0; i < array.length; i++) {
-            /*не хотел писать првоерку длины массива, решил, что двойная проверка
-            первого элемента - меньшее зло.*/
             if (array[i] < result) {
-                result = array[i]; //присваиваем result значение array[i], если array[i]<result
+                result = array[i];
             }
         }
         return result;
     }
 
     public double min(double[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
-        double result = array[0]; //первый элемент массива - первый кандидат в минимальные значения
+        double result = array[0];
         for (int i = 0; i < array.length; i++) {
-            /*не хотел писать првоерку длины массива, решил, что двойная проверка
-            первого элемента - меньшее зло.*/
             if (array[i] < result) {
-                result = array[i]; //присваиваем result значение array[i], если array[i]<result
+                result = array[i];
             }
         }
         return result;
@@ -75,30 +71,26 @@ public class ArrayKeeper {
     метод возвращал null, но не вижу другого способа показать, что введен неверный аргумент.
      */
     public int max(int[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
-        int result = array[0]; //первый элемент массива - первый кандидат в максимальные значения
+        int result = array[0];
         for (int i = 0; i < array.length; i++) {
-            /*не хотел писать првоерку длины массива, решил, что двойная проверка
-            первого элемента - меньшее зло.*/
             if (array[i] > result) {
-                result = array[i]; //присваиваем result значение array[i], если array[i]>result
+                result = array[i];
             }
         }
         return result;
     }
 
     public double max(double[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
-        double result = array[0]; //первый элемент массива - первый кандидат в максимальные значения
+        double result = array[0];
         for (int i = 0; i < array.length; i++) {
-            /*не хотел писать првоерку длины массива, решил, что двойная проверка
-            первого элемента - меньшее зло.*/
             if (array[i] > result) {
-                result = array[i]; //присваиваем result значение array[i], если array[i]>result
+                result = array[i];
             }
         }
         return result;
@@ -110,26 +102,26 @@ public class ArrayKeeper {
     метод возвращал null, но не вижу другого способа показать, что введен неверный аргумент.
      */
     public int maxPositive(int[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
-        int result = 0;//первое значение - 0. Гарантирует поиск только позитивных значений
+        int result = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > result) {
-                result = array[i]; //присваиваем result значение array[i], если array[i]>result
+                result = array[i];
             }
         }
         return result;
     }
 
     public double maxPositive(double[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
-        double result = 0;//первое значение - 0. Гарантирует поиск только позитивных значений
+        double result = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > result) {
-                result = array[i]; //присваиваем result значение array[i], если array[i]>result
+                result = array[i];
             }
         }
         return result;
@@ -141,12 +133,12 @@ public class ArrayKeeper {
     , бросает исключение.
      */
     public long multiplication(int[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
         long result=1;
         for (int elt : array) {
-            if(Long.MAX_VALUE/elt<result){ //Если произведение > предельного значения long, бросаем исключение
+            if(Long.MAX_VALUE/elt<result){
                 throw new IllegalArgumentException("Sum is out of Long bounds!");
             }
             result*=elt;
@@ -155,12 +147,12 @@ public class ArrayKeeper {
     }
 
     public double multiplication(double[] array) {
-        if (array.length == 0) { //Если массив пустой - бросаем исключение.
+        if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
         long result=1;
         for (double elt : array) {
-            if(Long.MAX_VALUE/elt<result){ //Если произведение > предельного значения long, бросаем исключение
+            if(Long.MAX_VALUE/elt<result){
                 throw new IllegalArgumentException("Sum is out of Long bounds!");
             }
             result*=elt;
@@ -169,17 +161,22 @@ public class ArrayKeeper {
     }
 
     //MODULUS
-    public double modulus(int[] array) {
-        if(array.length==0){ //Если массив пустой - бросаем исключение.
+    public int modulus(int[] array) {
+        if(array.length==0){
             throw new IllegalArgumentException("The array is empty");
         }
-
-        return (double)((double)array[0]%(double)array[array.length-1]);//cast to double to avoid Division by zero error
+        if(array[array.length-1]==0){
+            throw new IllegalArgumentException("Devision by zero.");
+        }
+        return array[0]%array[array.length-1];
     }
 
     public double modulus(double[] array) {
         if(array.length==0){ //Если массив пустой - бросаем исключение.
             throw new IllegalArgumentException("The array is empty");
+        }
+        if(array[array.length-1]==0){
+            throw new IllegalArgumentException("Devision by zero.");
         }
         return array[0]%array[array.length-1];
     }
@@ -194,17 +191,17 @@ public class ArrayKeeper {
             throw new IllegalArgumentException("The array length < 2");
         }
         int largest = array[0];
-        int second_largest = array[0]; //сначала инициализируем обе переменных значением первого элемента массива
+        int secondLargest = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (array[i] > largest) { //если элемент массива > largest, присваиваем second_largest=largest
-                second_largest=largest; // и largest =  элемент массива
+            if (array[i] > largest) {
+                secondLargest=largest;
                 largest = array[i];
             }
-            else if(array[i] > second_largest){ //иначе проверяем больше ли элемент, чем second_largest
-                second_largest = array[i];
+            else if(array[i] > secondLargest){
+                secondLargest = array[i];
             }
         }
-        return second_largest;
+        return secondLargest;
     }
 
     public double secondLargest(double[] array) {
@@ -212,17 +209,17 @@ public class ArrayKeeper {
             throw new IllegalArgumentException("The array length < 2");
         }
         double largest = array[0];
-        double second_largest = array[0]; //сначала инициализируем обе переменных значением первого элемента массива
+        double secondLargest = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (array[i] > largest) { //если элемент массива > largest, присваиваем second_largest=largest
-                second_largest=largest; // и largest =  элемент массива
+            if (array[i] > largest) {
+                secondLargest=largest;
                 largest = array[i];
             }
-            else if(array[i] > second_largest){ //иначе проверяем больше ли элемент, чем second_largest
-                second_largest= array[i];
+            else if(array[i] > secondLargest){
+                secondLargest= array[i];
             }
         }
-        return second_largest;
+        return secondLargest;
     }
 
 
