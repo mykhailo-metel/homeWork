@@ -12,7 +12,7 @@ public class Bank {
      * balance after withdrawal. Print NO is withdrawal is not possible.
      */
 
-    public static void withdraw(int balance, int withdrawal) {
+    public static int withdraw(int balance, int withdrawal) {
         if(withdrawal<0){
             throw new IllegalArgumentException("Withdrawal must be >0");
         }
@@ -21,6 +21,7 @@ public class Bank {
         if (balance >= totalWithdrawal) {
             System.out.println(String.format("OK\t%.2f\t%.2f", withdrawal
                     * COMISSION, balance - totalWithdrawal));
+            return (int)Math.round(balance - totalWithdrawal);
         } else {
             System.out.println("NO");
         }
