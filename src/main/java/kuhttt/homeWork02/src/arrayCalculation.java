@@ -1,97 +1,153 @@
 
-public class arrayCalculation {
-    private int max(int[] array){
+public class ArrayCalculation {
+
+    public int max(int[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         int max = 0;
-        for (int anArray : array) {
-            if (anArray > max) {
-                max = anArray;
+        for (int element : array) {
+            if (element > max) {
+                max = element;
             }
         }
         return max;
     }
-    private double max(double[] array){
+
+    public double max(double[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         double max = 0;
-        for (double anArray : array) {
-            if (anArray > max) {
-                max = anArray;
+        for (double element : array) {
+            if (element > max) {
+                max = element;
             }
         }
         return max;
     }
-    private int min(int[] array) {
+
+    public int min(int[] array) {
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         int min = 0;
-        for (int anArray : array) {
-            if (anArray < min)
+        for (int element : array) {
+            if (element < min)
                 min = anArray;
         }
         return min;
     }
-    private double min(double[] array){
+
+    public double min(double[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         double min = 0;
-        for (double anArray : array) {
-            if (anArray < min)
-                min = anArray;
+        for (double element : array) {
+            if (element < min)
+                min = element;
         }
         return min;
     }
-    private int sum(int[] array){
+
+    public int sum(int[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         int sum = 0;
-        for (int anArray : array) {
-            sum += anArray;
+        for (int element : array) {
+            sum += element;
         }
         return sum;
     }
-    private double sum(double[] array){
+
+    public double sum(double[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         double sum = 0;
-        for (double anArray : array) {
-            sum += anArray;
+        for (double element : array) {
+            sum += element;
         }
         return sum;
     }
-    private int maxPositive(int[] array){
+
+    public int maxPositive(int[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         int max = 0;
-        for (int anArray : array) {
-            if (anArray < 0) {
-                continue;
-            } else if (max < anArray) {
-                max = anArray;
+        for (int element : array) {
+             if (element > 0 && max < element) {
+                max = element;
             }
         }
         return max;
     }
-    private double maxPositive(double[] array) {
+
+    public double maxPositive(double[] array) {
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         double max = 0;
-        for (double anArray : array) {
-            if (anArray < 0) {
-                continue;
-            } else if (max < anArray)
-                max = anArray;
+        for (double element : array) {
+             if (element > 0 && max < element)
+                max = element;
         }
         return max;
     }
-    private int multiplication(int[] array){
+
+    public int multiplication(int[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         int mult = array[0];
         for(int i = 1; i < array.length; i++){
             mult *= array[i];
         }
         return mult;
     }
-    private double multiplication(double[] array){
+
+    public double multiplication(double[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         double mult = array[0];
         for(int i = 1; i < array.length; i++){
             mult *= array[i];
         }
         return mult;
     }
-    private int modulus(int[] array){
+
+    public int modulus(int[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         int first = array[0],last=array[array.length-1];
-        return first%last;
+        if (last == 0){
+            return -1;
+        } else {
+            return first % last;
+        }
     }
-    private double modulus(double[] array){
+
+    public double modulus(double[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         double first=array[0],last=array[array.length-1];
-        return first%last;
+        if (last == 0) {
+            return -1;
+        } else {
+            return first % last;
+        }
     }
-    private int secondLargest(int[] array){
+
+    public int secondLargest(int[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         int max = array[0];
         int secMax = array[0];
         for (int i = 1; i < array.length; i++) {
@@ -104,7 +160,11 @@ public class arrayCalculation {
         }
         return secMax;
     }
-    private double secondLargest(double[] array){
+
+    public double secondLargest(double[] array){
+        if (array.length == 0 || array == null) {
+            throw new IllegalArgumentException ("Array is empty!");
+        }
         double max = array[0];
         double secMax = array[0];
         for (int i = 1; i < array.length; i++) {
@@ -116,10 +176,11 @@ public class arrayCalculation {
             }
         }
         return secMax;
+
     }
 
     public static void main(String[] args) {
-        arrayCalculation arr = new arrayCalculation();
+        ArrayCalculation arr = new ArrayCalculation();
         int[] iArray = {1, 23, -45, 22, 209, 0, -33, 10, 8, -9};
         double[] dArray = {3.2, 4.88, -0.12, 444, 555, -4653.1, 5, 98, -75.333};
         System.out.println(
