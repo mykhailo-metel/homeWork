@@ -1,10 +1,12 @@
-package crazyjedi.homeWork01;
+package Homework1;
 
-/**
- * Created by Vlad on 05.02.2017.
- */
+
 public class SecondClass {
-    public void PrintMessage(){
+    public static void PrintMessage() {
         System.out.println("Мой первый класс на Java");
+    }
+
+    public static void main(String[] args) {
+        PrintMessage();
     }
 }
