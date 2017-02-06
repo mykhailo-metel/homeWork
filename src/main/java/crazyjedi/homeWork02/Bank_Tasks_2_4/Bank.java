@@ -25,6 +25,7 @@ public class Bank {
         } else {
             System.out.println("NO");
         }
+        return balance;
     }
 
     //Homework 2. Task 3.

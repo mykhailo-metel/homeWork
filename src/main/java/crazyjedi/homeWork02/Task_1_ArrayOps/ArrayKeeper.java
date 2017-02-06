@@ -9,6 +9,9 @@ public class ArrayKeeper {
     Функция суммирует элементы массива. Если сумма получается слишком большой, бросает исключение.
      */
     public long sum(int[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         long result = 0;
         for (int elt : array) {
             if (Long.MAX_VALUE - result < elt) {
@@ -22,6 +25,9 @@ public class ArrayKeeper {
     }
 
     public double sum(double[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         double result = 0;
         for (double elt : array) {
             if (Double.MAX_VALUE - result < elt) {
@@ -40,6 +46,9 @@ public class ArrayKeeper {
     метод возвращал null, но не вижу другого способа показать, что введен неверный аргумент.
      */
     public int min(int[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -53,6 +62,9 @@ public class ArrayKeeper {
     }
 
     public double min(double[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -71,6 +83,9 @@ public class ArrayKeeper {
     метод возвращал null, но не вижу другого способа показать, что введен неверный аргумент.
      */
     public int max(int[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -84,6 +99,9 @@ public class ArrayKeeper {
     }
 
     public double max(double[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -102,6 +120,9 @@ public class ArrayKeeper {
     метод возвращал null, но не вижу другого способа показать, что введен неверный аргумент.
      */
     public int maxPositive(int[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -115,6 +136,9 @@ public class ArrayKeeper {
     }
 
     public double maxPositive(double[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -133,6 +157,9 @@ public class ArrayKeeper {
     , бросает исключение.
      */
     public long multiplication(int[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -147,6 +174,9 @@ public class ArrayKeeper {
     }
 
     public double multiplication(double[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("The array is empty");
         }
@@ -162,6 +192,9 @@ public class ArrayKeeper {
 
     //MODULUS
     public int modulus(int[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if(array.length==0){
             throw new IllegalArgumentException("The array is empty");
         }
@@ -172,6 +205,9 @@ public class ArrayKeeper {
     }
 
     public double modulus(double[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if(array.length==0){ //Если массив пустой - бросаем исключение.
             throw new IllegalArgumentException("The array is empty");
         }
@@ -187,6 +223,9 @@ public class ArrayKeeper {
     метод возвращал null, но не вижу другого способа показать, что введен неверный аргумент.
      */
     public int secondLargest(int[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length <= 1) { //Если длина массива меньше 2, у него не может быть второго максимального значения.
             throw new IllegalArgumentException("The array length < 2");
         }
@@ -205,6 +244,9 @@ public class ArrayKeeper {
     }
 
     public double secondLargest(double[] array) {
+        if(array==null){
+            throw new IllegalArgumentException("Array must not be null.");
+        }
         if (array.length <= 1) { //Если длина массива меньше 2, у него не может быть второго максимального значения.
             throw new IllegalArgumentException("The array length < 2");
         }
