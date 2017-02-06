@@ -66,7 +66,7 @@ public class Bank {
     public static void fundOneOfArray(int[] balances, String[] ownerNames, String ownerName, double funding) {
 
         //Я предполагаю, что ownerNames содержит уникальные идентификаторы счета
-        
+
         if (balances.length != ownerNames.length) { /*Надо удостовериться, что массивы одной длины*/
             throw new IllegalArgumentException("Arrays are of different length.");
         }
