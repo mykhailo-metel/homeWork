@@ -1,9 +1,6 @@
-package oleksandrbidnyi.homeWork02.Homework2_3.src;
-
 import java.util.Arrays;
 
 public class Account {
-    private double balance;
     private double commission = 0.05;
     private double[] balances;
     private String[] ownerNames;
@@ -20,8 +17,12 @@ public class Account {
             System.out.println("There is no such account name");
             return;
         }
+        double balance; //произвел перенос balance в локальные переменные
         balance = balances[index];
-        if ((balance-moneyYouWantToWithdraw-(moneyYouWantToWithdraw* commission)>=0)){
+        if (moneyYouWantToWithdraw < 0) {//добавил проверку на валидность
+            System.out.println("Invalid value");
+        }
+        else if ((balance-moneyYouWantToWithdraw-(moneyYouWantToWithdraw* commission)>=0)){
             balance = balance-moneyYouWantToWithdraw-(moneyYouWantToWithdraw* commission);
             System.out.println(ownerName+" OK, commission: " + commission + " balance after withdrawal: " + balance);
             balances[index] = balance;

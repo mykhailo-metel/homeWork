@@ -1,5 +1,3 @@
-package oleksandrbidnyi.homeWork02.Homework2_2.src;
-
 public class Account {
 
     private double balance;
@@ -25,14 +23,18 @@ public class Account {
         this.commission = commission;
     }
 
-    public void withdrowal(double moneyYouWantToWithdraw){
-        if ((balance-moneyYouWantToWithdraw-(moneyYouWantToWithdraw* commission)>=0)){
-            balance = balance-moneyYouWantToWithdraw-(moneyYouWantToWithdraw* commission);
+    public void withdrowal(double moneyYouWantToWithdraw) {
+        if (moneyYouWantToWithdraw < 0) {//добавил проверку на валидность
+            System.out.println("Invalid value");
+        }
+        else if (balance - moneyYouWantToWithdraw - (moneyYouWantToWithdraw * commission) >= 0) {
+            balance = balance - moneyYouWantToWithdraw - (moneyYouWantToWithdraw * commission);
             System.out.println("OK, commission: " + commission + " balance after withdrawal: " + balance);
-        }else{
+        } else {
             System.out.println("Not enough money to complete this operation");
         }
     }
 }
+
 
 
