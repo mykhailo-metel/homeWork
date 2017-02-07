@@ -1,4 +1,4 @@
-public class CalculateMax_positive {
+public class CalculateMaxPositive {
     public static void main(String[] args) {
         // А что, если массив вообще не будет иметь позитивных значений и будет состоять из одних только отрицательных чисел?
 
