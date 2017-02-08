@@ -124,11 +124,10 @@ public class ArrayCalculation {
         if (array.length == 0 || array == null) {
             throw new IllegalArgumentException ("Array is empty!");
         }
-        int first = array[0],last=array[array.length-1];
-        if (last == 0){
-            return -1;
-        } else {
-            return first % last;
+        if (array[array.length-1]==0) {
+            throw new IllegalArgumentException("Error! Division by zero!");
+        }
+            return array[0] % array[array.length - 1];
         }
     }
 
@@ -136,11 +135,10 @@ public class ArrayCalculation {
         if (array.length == 0 || array == null) {
             throw new IllegalArgumentException ("Array is empty!");
         }
-        double first=array[0],last=array[array.length-1];
-        if (last == 0) {
-            return -1;
-        } else {
-            return first % last;
+        if (array[array.length-1]==0) {
+            throw new IllegalArgumentException("Error! Division by zero!");
+        }
+        return array[0] % array[array.length - 1];
         }
     }
 
