@@ -23,44 +23,34 @@ package homeWork02;
 //            Output
 //            NO
 
-
 public class HomeWork022 {
-
-    static double COMISSION_PERCENT = 0.05;
+    private static double COMISSION_PERCENT = 0.05;
 
     public static void main(String[] args) {
-
         HomeWork022 classItem = new HomeWork022();
-        double balance1=200;
-        double ballance2=50;
+        double balance1 = 200;
+        double balance2 = 50;
+        double amount = 100;
 
-        double amount=100;                      // Случай когда денег достаточно
         classItem.withdraw(balance1, amount);
-
-        amount = 49;                            // Случай когда денег достаточно
-        classItem.withdraw(ballance2,amount);
-
+        amount = 49;
+        classItem.withdraw(balance2,amount);
     }
 
     public double withdraw(double remainingFunds, double amountOfCash) {
+        double commision = 0;
 
-        double commision=0;
-
-        if(amountOfCash >= 0){
-
+        if(amountOfCash >= 0) {
             commision = amountOfCash * COMISSION_PERCENT;
             System.out.println("balance = " + remainingFunds + "\nwithdrawal = " + amountOfCash);
-
-            if( ( remainingFunds - amountOfCash - commision) >= 0 ) {
-                remainingFunds -= ( amountOfCash + commision);
+            if( (remainingFunds - amountOfCash - commision) >= 0 ) {
+                remainingFunds -= amountOfCash + commision;
                 System.out.println( "OK\t" + commision + "\t" + remainingFunds );
             }
             else {
                 System.out.println("No");
             }
-
         }
-
         return remainingFunds;
     }
 
