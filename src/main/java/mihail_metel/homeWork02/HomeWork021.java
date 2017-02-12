@@ -1,7 +1,6 @@
 package homeWork02;
 
 
-
 public class HomeWork021 {
 //            •	sum(int array[]), sum(double[])
 //            •	min(int array[]), min(double[])
@@ -13,9 +12,9 @@ public class HomeWork021 {
 private int[] myIntArray;
 private double[] myDoubleArray;
 
-    public static void main(String[] args) {
-        HomeWork021 arrAct = new HomeWork021();
+    public static void main(String[] args) throws ExceptionEmptyArray {
 
+        HomeWork021 arrAct = new HomeWork021();
         arrAct.setMyIntArray(new int[]{//1,1,2,2});/*
                 15,
                 6,
@@ -27,7 +26,6 @@ private double[] myDoubleArray;
                 3258,
                 -125,
                 10});
-
         arrAct.setMyDoubleArray(new double[]{
                 10,2,
                 6.5,
@@ -40,290 +38,217 @@ private double[] myDoubleArray;
                 -125,
                 4});
 
-        for (int i = 0; i < arrAct.getMyIntArray().length; i++) {
-            System.out.println(arrAct.getMyIntArray()[i]);
+        try {
+            for (int i = 0; i < arrAct.getMyIntArray().length; i++) {
+                System.out.println(arrAct.getMyIntArray()[i]);
+            }
+
+            System.out.println("Инты: ");
+            System.out.println("Сумма масива: " + arrAct.sum(arrAct.getMyIntArray()));
+            System.out.println("Минимальное значение массива: " + arrAct.min(arrAct.getMyIntArray()));
+            System.out.println("Максимальное значение массива: " + arrAct.max(arrAct.getMyIntArray()));
+            System.out.println("Максимальное положительное значение массива: " + arrAct.maxPositive(arrAct.getMyIntArray()));
+            System.out.println("Результат перемножения массива: " + arrAct.multiplication(arrAct.getMyIntArray()));
+            System.out.println("Остаток от деления первого элемента массива на последний: "
+                    + arrAct.modulus(arrAct.getMyIntArray()));
+            System.out.println("Второе по величине число массива: " + arrAct.secondLargest(arrAct.getMyIntArray()));
+
+            System.out.println("\nДаблы: ");
+            for (int i = 0; i < arrAct.getMyIntArray().length; i++) {
+                System.out.println(arrAct.getMyDoubleArray()[i]);
+            }
+
+            System.out.println("Сумма масива: " + arrAct.sum(arrAct.getMyDoubleArray()));
+            System.out.println("Минимальное значение массива: " + arrAct.min(arrAct.getMyDoubleArray()));
+            System.out.println("Максимальное значение массива: " + arrAct.max(arrAct.getMyDoubleArray()));
+            System.out.println("Максимальное положительное значение массива: " + arrAct.maxPositive(arrAct.getMyDoubleArray()));
+            System.out.println("Результат перемножения массива: " + arrAct.multiplication(arrAct.getMyDoubleArray()));
+            System.out.println("Остаток от деления первого элемента массива на последний: "
+                    + arrAct.modulus(arrAct.getMyDoubleArray()));
+            System.out.println("Второе по величине число массива: " + arrAct.secondLargest(arrAct.getMyDoubleArray()));
+            arrAct.setMyDoubleArray(null);
         }
-
-        System.out.println("Инты: ");
-        System.out.println("Сумма масива: " + arrAct.sum(arrAct.getMyIntArray()));
-        System.out.println("Минимальное значение массива: " + arrAct.min(arrAct.getMyIntArray()));
-        System.out.println("Максимальное значение массива: " + arrAct.max(arrAct.getMyIntArray()));
-        System.out.println("Максимальное положительное значение массива: " + arrAct.maxPositive(arrAct.getMyIntArray()));
-        System.out.println("Результат перемножения массива: " + arrAct.multiplication(arrAct.getMyIntArray()));
-        System.out.println("Остаток от деления первого элемента массива на последний: "
-                + arrAct.modulus(arrAct.getMyIntArray()));
-        System.out.println("Второе по величине число массива: " + arrAct.secondLargest(arrAct.getMyIntArray()));
-
-        System.out.println("\nДаблы: ");
-
-        for (int i = 0; i < arrAct.getMyIntArray().length; i++) {
-            System.out.println(arrAct.getMyDoubleArray()[i]);
+        catch (ExceptionEmptyArray e){
+            System.out.println(e.toString());
         }
-
-        System.out.println("Сумма масива: " + arrAct.sum(arrAct.getMyDoubleArray()));
-        System.out.println("Минимальное значение массива: " + arrAct.min(arrAct.getMyDoubleArray()));
-        System.out.println("Максимальное значение массива: " + arrAct.max(arrAct.getMyDoubleArray()));
-        System.out.println("Максимальное положительное значение массива: " + arrAct.maxPositive(arrAct.getMyDoubleArray()));
-        System.out.println("Результат перемножения массива: " + arrAct.multiplication(arrAct.getMyDoubleArray()));
-        System.out.println("Остаток от деления первого элемента массива на последний: "
-                + arrAct.modulus(arrAct.getMyDoubleArray()));
-        System.out.println("Второе по величине число массива: " + arrAct.secondLargest(arrAct.getMyDoubleArray()));
+        catch (Exception e){
+            System.out.println("Error");
+        }
 
     }
 
-    // Геттеры и сеттеры
-    public int[] getMyIntArray() {
+
+    public int[] getMyIntArray() throws ExceptionEmptyArray {
+        if ( (myIntArray == null) || (myIntArray.length == 0) ){
+                throw new ExceptionEmptyArray();
+        }
         return myIntArray;
     }
 
-    public void setMyIntArray(int[] myIntArray) {
+    public void setMyIntArray(int[] myIntArray) throws ExceptionEmptyArray {
+        if ( (myIntArray == null) || (myIntArray.length == 0) ){
+            throw new ExceptionEmptyArray();
+        }
         this.myIntArray = myIntArray;
     }
 
-    public double[] getMyDoubleArray() {
+    public double[] getMyDoubleArray() throws ExceptionEmptyArray {
+        if ( (myDoubleArray == null) || (myDoubleArray.length == 0) ){
+            throw new ExceptionEmptyArray();
+        }
         return myDoubleArray;
     }
 
-    public void setMyDoubleArray(double[] myDoubleArray) {
+    public void setMyDoubleArray(double[] myDoubleArray) throws ExceptionEmptyArray {
+        if ( (myDoubleArray == null) || (myDoubleArray.length == 0) ){
+            throw new ExceptionEmptyArray();
+        }
         this.myDoubleArray = myDoubleArray;
     }
 
-    // Methods with integer arrays
     public int sum(int array[]){
-
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         int sum=0;
 
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
+        for (int anArray : array) {
+            sum += anArray;
         }
-
         return sum;
     }
 
     public int min(int array[]){
+        int minimum = array[0];
 
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
-        int minimum=array[0];
-
-        for (int i = 0; i < array.length; i++) {
-            if ( minimum > array[i] ){
-                minimum = array[i];
+        for (int anArray : array) {
+            if (minimum > anArray) {
+                minimum = anArray;
             }
         }
-
         return minimum;
     }
 
     public int max(int array[]){
+        int maximum = array[0];
 
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
-        int maximum=array[0];
-
-        for (int i = 0; i < array.length; i++) {
-
-            if( maximum < array[i] ){
-                maximum = array[i];
+        for (int anArray : array) {
+            if (maximum < anArray) {
+                maximum = anArray;
             }
-
         }
-
         return maximum;
     }
 
     public int maxPositive(int array[]){
-
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         int max_positive = 0;
 
-        for (int i = 0; i < array.length; i++) {
-
-            if(max_positive < array[i] && array[i] >= 0 ){
-                max_positive = array[i];
+        for (int anArray : array) {
+            if (max_positive < anArray) {
+                max_positive = anArray;
             }
-
         }
-
         return max_positive;
     }
 
     public int multiplication(int array[]){
-
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         int multip = 1;
 
-        for (int i = 0; i < array.length; i++) {
-            multip *= array[i];
+        for (int anArray : array) {
+            multip *= anArray;
         }
-
         return multip;
     }
 
     public int modulus(int array[]){
-
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         return array[0] % array[array.length - 1];
-
     }
 
     public int secondLargest(int array[]){
-
-        if (array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
             int firstMax = array[0];
             int secondMax = array[0];
 
-        for (int i = 0; i < array.length; i++) {
-
-            if ( firstMax < array[i] ){
-                firstMax = array[i];
+        for (int anArray : array) {
+            if (firstMax < anArray) {
+                firstMax = anArray;
+            } else if (secondMax < anArray) {
+                secondMax = anArray;
             }
-            else if(secondMax < array[i] ){
-                secondMax = array[i];
-            }
-
         }
-
         return secondMax;
     }
 
-    //Methods with double arrays
     public double sum(double[] array){
+        double sum = 0;
 
-        if(array == null){        // проверка на пустоту массива
-            return 0;
+        for (double anArray : array) {
+            sum += anArray;
         }
-
-        double sum=0;
-
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
-        }
-
         return sum;
     }
 
     public double min(double[] array){
+        double minimum = array[0];
 
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
-        double minimum=array[0];
-
-        for (int i = 0; i < array.length; i++) {
-            if ( minimum > array[i] ){
-                minimum = array[i];
+        for (double anArray : array) {
+            if (minimum > anArray) {
+                minimum = anArray;
             }
         }
-
         return minimum;
     }
 
     public double max(double[] array){
+        double maximum = array[0];
 
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
-        double maximum=array[0];
-
-        for (int i = 0; i < array.length; i++) {
-
-            if( maximum < array[i] ){
-                maximum = array[i];
+        for (double anArray : array) {
+            if (maximum < anArray) {
+                maximum = anArray;
             }
-
         }
-
         return maximum;
     }
 
     public double maxPositive(double[] array){
-
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         double max_positive = 0;
 
-        for (int i = 0; i < array.length; i++) {
-
-            if(max_positive < array[i] && array[i] >= 0 ){
-                max_positive = array[i];
+        for (double anArray : array) {
+            if (max_positive < anArray) {
+                max_positive = anArray;
             }
-
         }
-
         return max_positive;
     }
 
     public double multiplication(double[] array){
-
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         double multip = 1;
 
-        for (int i = 0; i < array.length; i++) {
-            multip *= array[i];
+        for (double anArray : array) {
+            multip *= anArray;
         }
-
         return multip;
     }
 
     public double modulus(double[] array){
-
-        if(array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         return array[0] % array[array.length - 1];
-
     }
 
     public double secondLargest(double[] array){
-
-        if (array == null){        // проверка на пустоту массива
-            return 0;
-        }
-
         double firstMax = array[0];
         double secondMax = array[0];
 
-        for (int i = 0; i < array.length; i++) {
-
-            if ( firstMax < array[i] ){
-                firstMax = array[i];
+        for (double anArray : array) {
+            if (firstMax < anArray) {
+                firstMax = anArray;
+            } else if (secondMax < anArray) {
+                secondMax = anArray;
             }
-            else if(secondMax < array[i] ){
-                secondMax = array[i];
-            }
-
         }
-
         return secondMax;
     }
 
 }
+
+class ExceptionEmptyArray extends Exception{
+    public String toString(){
+        return "Error. Empty Array";
+    }
+}
+

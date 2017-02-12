@@ -1,9 +1,6 @@
-package oleksandrbidnyi.homeWork02.Homework2_4.src;
-
 import java.util.Arrays;
 
 public class Account {
-    private double balance;
     private double[] balances;
     private String[] ownerNames;
 
@@ -18,7 +15,10 @@ public class Account {
             System.out.println("There is no such account name");
             return;
         }
-        if(moneyYouWantToFund>0){
+        if (moneyYouWantToFund < 0) {//добавил проверку на валидность
+            System.out.println("Invalid value");}
+        else if(moneyYouWantToFund>0){
+            double balance; //произвел перенос balance в локальные переменные
             balance = balances[index];
             balance=balance+moneyYouWantToFund;
             System.out.println(ownerName + " balance after funding: " +balance);

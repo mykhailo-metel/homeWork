@@ -1,9 +1,7 @@
-package oleksandrbidnyi.homeWork02.Homework2_1.src;
-
 public class ArrayCalc {
 
     public int sum(int array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Integer array is empty");
         }
         int sum = 0;
@@ -14,7 +12,7 @@ public class ArrayCalc {
     }
 
     public double sum(double array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Double array is empty");
         }
         double sum = 0;
@@ -26,7 +24,7 @@ public class ArrayCalc {
     }
 
     public int min(int array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Integer array is empty");
         }
         int min = array[0];
@@ -39,7 +37,7 @@ public class ArrayCalc {
     }
 
     public double min(double array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Double array is empty");
         }
         double min = array[0];
@@ -52,7 +50,7 @@ public class ArrayCalc {
     }
 
     public int max(int array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Integer array is empty");
         }
         int max = array[0];
@@ -65,7 +63,7 @@ public class ArrayCalc {
     }
 
     public double max(double array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Double array is empty");
         }
         double max = array[0];
@@ -78,7 +76,7 @@ public class ArrayCalc {
     }
 
     public int maxPositive(int array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Integer array is empty");
         }
         int maxPositive = array[0];
@@ -91,7 +89,7 @@ public class ArrayCalc {
     }
 
     public double maxPositive(double array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Double array is empty");
         }
         double maxPositive = array[0];
@@ -104,7 +102,7 @@ public class ArrayCalc {
     }
 
     public int multiplication(int array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Integer array is empty");
         }
         int multiplication = 1;
@@ -115,7 +113,7 @@ public class ArrayCalc {
     }
 
     public double multiplication(double array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Double array is empty");
         }
         double multiplication = 1;
@@ -125,25 +123,27 @@ public class ArrayCalc {
         return multiplication;
     }
 
-    public double modulus(int array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+    public int modulus(int array[]) {
+        if (array.length == 0) {
             throw new IllegalArgumentException("Integer array is empty");
         }
-        double modulus = (double)array[0] % (double)array[array.length - 1];//вместо "9" я поставил последний эллемент массива, также произвел приведение в double, чтоб избежать ошибки с нулем
-            return modulus;
+        if (array[array.length-1]==0){
+            throw new IllegalArgumentException("Invalid value of last element");
+        }
+            return array[0] % array[array.length - 1];//вместо "9" я поставил последний эллемент массива, также произвел приведение в double, чтоб избежать ошибки с нулем
     }
 
+
     public double modulus(double array[]) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Double array is empty");
         }
         double modulus = array[0] % array[array.length-1];//вместо "9" я поставил последний эллемент массива
-
         return modulus;
     }
 
     public int secondLargest(int[] array) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Integer array is empty");
         }
         int secondLargest = array[0];
@@ -161,7 +161,7 @@ public class ArrayCalc {
     }
 
     public double secondLargest(double[] array) {
-        if (array.length == 0) { //производится проверка на пустоту, посредством исключения
+        if (array.length == 0) {
             throw new IllegalArgumentException("Double array is empty");
         }
         double secondLargest = array[0];
