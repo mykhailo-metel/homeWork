@@ -11,13 +11,6 @@ package homeWork03.homeWork032;
         boolean check(Integer a, Integer b)*/
 
 public class Arithmetic {
-
-    public static void main(String[] args) {
-        Arithmetic arithmetic = new Arithmetic();
-
-        arithmetic.add(2,3);
-    }
-
     public int add(Integer a, Integer b){
         return a + b;
     }
