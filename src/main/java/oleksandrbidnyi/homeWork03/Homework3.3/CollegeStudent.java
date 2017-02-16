@@ -4,9 +4,6 @@ public class CollegeStudent extends Student {
     private int rating;
     private long id;
 
-    public CollegeStudent() {
-    }
-
     public String getCollegeName() {
         return collegeName;
     }
