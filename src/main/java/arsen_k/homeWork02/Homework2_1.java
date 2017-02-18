@@ -1,7 +1,5 @@
 import java.util.Arrays;
 
-import static netscape.security.Privilege.add;
-
 public class Homework2_1 {
 
     public static void main(String[] args) {
