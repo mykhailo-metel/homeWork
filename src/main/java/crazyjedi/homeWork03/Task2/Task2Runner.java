@@ -9,16 +9,18 @@ public class Task2Runner {
         int a = 10;
         int b = 5;
 
-        System.out.println(Adder.add(a,b));//15
-        System.out.println(Adder.check(a,b));//true
-        System.out.println(Adder.check(b,a));//false
+        Adder myAdder = new Adder();
+
+        System.out.println(myAdder.add(a,b));//15
+        System.out.println(myAdder.check(a,b));//true
+        System.out.println(myAdder.check(b,a));//false
 
         a = -10;
         b = 5;
 
-        System.out.println(Adder.add(a,b));//-5
-        System.out.println(Adder.check(a,b));//false
-        System.out.println(Adder.check(b,a));//true
+        System.out.println(myAdder.add(a,b));//-5
+        System.out.println(myAdder.check(a,b));//false
+        System.out.println(myAdder.check(b,a));//true
 
     }
 

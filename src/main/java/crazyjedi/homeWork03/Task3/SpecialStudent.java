@@ -8,26 +8,23 @@ public class SpecialStudent extends CollegeStudent {
     private long secretKey;
     private String email;
 
-    //Constructor 1 from CollegeStudent
     public SpecialStudent(String firstName, String lastName, int group) {
         super(firstName, lastName, group);
     }
 
-    //Constructor 2 from CollegeStudent
-    public SpecialStudent(String firstName, String lastName, int age, int group, Course[] coursesTaken
-            , String collegeName, int rating, long id) {
-        super(firstName, lastName, age, group, coursesTaken, collegeName, rating, id);
+    public SpecialStudent(String lastName, Course[] coursesTaken) {
+        super(lastName, coursesTaken);
     }
 
-
     //Constructor with SecretKey
+
     public SpecialStudent(String firstName, String lastName, int group, long secretKey) {
         super(firstName, lastName, group);
         this.secretKey = secretKey;
     }
 
-    //GETTERS AND SETTERS
 
+    //GETTERS AND SETTERS
 
     public long getSecretKey() {
         return secretKey;

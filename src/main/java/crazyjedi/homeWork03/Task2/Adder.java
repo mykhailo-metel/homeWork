@@ -6,7 +6,7 @@ package crazyjedi.homeWork03.Task2;
  * использовать без создания экземпляра класса.
  */
 public class Adder extends Arithmetic{
-    public static boolean check(int a, int b){
+    public boolean check(int a, int b){
         return a >= b;
     }
 }
