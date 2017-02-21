@@ -27,9 +27,6 @@ public class Course {
         if("".equals(teacherName)){
             throw new IllegalArgumentException("Insert valid (not null and not empty) teacherName!");
         }
-        if(hoursDuration<=0||hoursDuration>18000){//18000 часов - это два года непрерывных занятий
-            throw new IllegalArgumentException("Course duration is possibly wrong (<0 or >18000 hours)");
-        }
         this.name = name;
         this.hoursDuration = hoursDuration;
         this.teacherName = teacherName;
@@ -54,7 +51,6 @@ public class Course {
     }
 
     //SETTERS
-
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;

@@ -1,15 +1,17 @@
 package crazyjedi.homeWork03.Task4;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Vlad on 09.02.2017.
  */
 public class User {
 
     private String name;
-    private int balance;
+    private BigDecimal balance;
     private int monthsOfEmployment;
     private String companyName;
-    private int salary;
+    private BigDecimal salary;
     private String currency;
 
     public User(String name, int balance, int monthsOfEmployment, String companyName, int salary, String currency) {
@@ -32,10 +34,12 @@ public class User {
             throw new IllegalArgumentException("salary must be >= 0.");
         }
         this.name = name;
-        this.balance = balance;
+        this.balance = new BigDecimal(balance);
+        this.balance.setScale(2, BigDecimal.ROUND_HALF_UP);
         this.monthsOfEmployment = monthsOfEmployment;
         this.companyName = companyName;
-        this.salary = salary;
+        this.salary = new BigDecimal(salary);
+        this.salary.setScale(2, BigDecimal.ROUND_HALF_UP);
         this.currency = currency;
     }
 
@@ -53,14 +57,14 @@ public class User {
     }
 
     public int getBalance() {
-        return balance;
+        return balance.intValue();
     }
 
     public void setBalance(int balance) {
         if (balance < 0) { //Предположим, что предоставление кредита не предусмотрено
             throw new IllegalArgumentException("balance must be >= 0.");
         }
-        this.balance = balance;
+        this.balance = new BigDecimal(balance);
     }
 
     public int getMonthsOfEmployment() {
@@ -86,14 +90,14 @@ public class User {
     }
 
     public int getSalary() {
-        return salary;
+        return salary.intValue();
     }
 
     public void setSalary(int salary) {
         if (salary < 0) {
             throw new IllegalArgumentException("salary must be >= 0.");
         }
-        this.salary = salary;
+        this.salary = new BigDecimal(salary);
     }
 
     public String getCurrency() {
@@ -110,16 +114,19 @@ public class User {
     //USER BEHAVIOR
 
     public void paySalary() {
-        this.balance += this.salary;
+        this.balance = this.balance.add(this.salary);
     }
 
-    public void withdraw(int summ) {
-        double comission = summ < 1000 ? 0.05 : 0.1;
-        int withdrawalAmt = (int) Math.round(summ * (1 + comission));
-        if (this.balance < withdrawalAmt) {
+    public void withdraw(int summ) { //Стоило бы сделать withdraw(String summ), но оставляю как в задании
+        final String COMISSION_UP_TO_1000="1.05";
+        final String COMISSION_MORE_THEN_1000="1.1";
+        BigDecimal comission = summ < 1000 ? new BigDecimal(COMISSION_UP_TO_1000) : new BigDecimal(COMISSION_MORE_THEN_1000);
+        BigDecimal withdrawalAmt = new BigDecimal(summ).multiply(comission);
+        withdrawalAmt.setScale(2, BigDecimal.ROUND_HALF_UP);
+        if (this.balance.compareTo(withdrawalAmt) < 0) {
             throw new IllegalArgumentException("Not enough balance to make a withdrawal.");
         }
-        this.balance -= summ * (1 + comission);
+        this.balance = this.balance.subtract(withdrawalAmt);
     }
 
     public int companyNameLenght() {
@@ -127,10 +134,10 @@ public class User {
     }
 
     public void monthIncreaser(int addMonth) {
-        if(addMonth<0){
+        if (addMonth < 0) {
             throw new IllegalArgumentException("This method INCREASES monthOfEmployment. addMonth should be >=0");
         }
-        this.monthsOfEmployment+=addMonth;
+        this.monthsOfEmployment += addMonth;
     }
 
 }

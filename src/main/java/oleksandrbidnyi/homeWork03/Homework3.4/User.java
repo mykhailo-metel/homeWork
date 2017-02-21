@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class User {
 
     private String name;
@@ -66,30 +68,36 @@ public class User {
 
 
     public void paySalary(){
-// setBalance(salary+balance);
         System.out.println("Баланс, после начисления заработной платы: " + (salary + balance));
         setBalance(salary+balance);
     }
 
     public void withdraw (int summ){
+        double commissionLess=0.05;
+        double commissionBigger=0.1;
         double balanceAfterWithdraw;
         if (summ <= 0) {
             System.out.println("Указанная сумма меньше 0 или равна 0");
             return;
         }
-        if(summ<1000 && balance > (summ*1.05)){
-            balanceAfterWithdraw = balance - (summ*0.05 + summ);
+        if(summ<1000 && balance > (summ*commissionLess + summ)){
+            balanceAfterWithdraw = balance - (summ*commissionLess + summ);
             System.out.println("Сумма меньше 1000, комиссия составляет 5%, баланс после снятия денег: " + balanceAfterWithdraw);
-            setBalance((int)balanceAfterWithdraw);
-        } else if (summ>1000&& balance > (summ*1.1)){
-            balanceAfterWithdraw = balance - (summ*0.1 + summ);
+            BigDecimal x = new BigDecimal((balanceAfterWithdraw));
+            x.setScale(2,BigDecimal.ROUND_HALF_UP);
+            setBalance((int)x.doubleValue());
+        } else if (summ>1000&& balance > (summ*commissionBigger + summ)){
+            balanceAfterWithdraw = balance - (summ*commissionBigger + summ);
             System.out.println("Сумма больше 1000, комиссия составляет 10%, баланс после снятия денег: " + balanceAfterWithdraw);
-            setBalance((int)balanceAfterWithdraw);
+            BigDecimal x = new BigDecimal((balanceAfterWithdraw));
+            x.setScale(2,BigDecimal.ROUND_HALF_UP);
+            setBalance((int)x.doubleValue());
         }
     }
 
-    public void companyNameLenght(){
-        System.out.println("Длина имени компании: " + companyName.length() + " символов");
+    public int companyNameLenght(){
+        int companyNameLenght = companyName.length();
+        return companyNameLenght;
     }
 
     public void monthIncreaser(int addMonth){

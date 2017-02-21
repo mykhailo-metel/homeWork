@@ -20,10 +20,9 @@ public class Solution {
         CollegeStudent secondCollegeStudent = new CollegeStudent("Oktopopulos", new Course[]{calculus, computerScience});
         CollegeStudent thirdCollegeStudent = new CollegeStudent("David", "Bobr", 20, 10
                 , new Course[]{literature, math}, "Miskatonic", 583, 2546);
-
+//
         SpecialStudent firstBond = new SpecialStudent("Pavel", "Morozov", 5);
-        SpecialStudent secondBond = new SpecialStudent("Fantazii", "Nehavtilo", 20, 15
-                , new Course[]{economics, calculus}, "Miskatonic", 548, 2547);
+        SpecialStudent secondBond = new SpecialStudent("Nehavtilo", new Course[]{economics, calculus});
         SpecialStudent thirdBond = new SpecialStudent("Gordon", "Freeman", 4, 12232);
 
     }
