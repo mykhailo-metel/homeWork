@@ -16,6 +16,9 @@ public class MyBankSystem implements BankSystem{
         if(bank.getLimitOfWithdrawal()<amount){
             throw new IllegalArgumentException("Can not withdraw such amount.");
         }
+        if(amount<0){
+            throw new IllegalArgumentException("Amount should be > 0");
+        }
         int comission = user.getBank().getCommission(amount);
         BigDecimal totalAmount = new BigDecimal(amount);
         totalAmount.setScale(2,BigDecimal.ROUND_HALF_UP);
@@ -28,6 +31,9 @@ public class MyBankSystem implements BankSystem{
         Bank bank =user.getBank();
         if(bank.getLimitOfFunding()<amount){
             throw new IllegalArgumentException("Limit of funding does not allow this.");
+        }
+        if(amount<0){
+            throw new IllegalArgumentException("Amount should be > 0");
         }
         user.setBalance(user.getBalance().add(new BigDecimal(amount)).doubleValue());
     }
