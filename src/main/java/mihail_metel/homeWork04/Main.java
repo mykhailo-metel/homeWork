@@ -28,8 +28,8 @@ import java.util.*;
 public class Main
 {
     public static void main(String[] args){
-        User usUser1 = new User();
-        User usUser2 = new User();
+//        User usUser1 = new User();
+//        User usUser2 = new User();
 
     }
 }
