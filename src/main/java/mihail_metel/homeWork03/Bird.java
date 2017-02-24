@@ -13,35 +13,16 @@ package homeWork03;
 public class Bird {
 
     public static void main(String[] args) {
-        Bird bird1 = new Bird();
-        Bird bird2 = new Bird(){
-            @Override
-            public void sing(){
-                System.out.println("I am flying");
-            }
-        };
+        Bird bird = new Bird();
 
-        Bird bird3 = new Bird(){
-            @Override
-            public void sing(){
-                System.out.println("I am singing");
-            }
-        };
+        bird.sing("I am walking");
+        bird.sing("I am flying");
+        bird.sing("I am singing");
+        bird.sing("I am Bird");
 
-        Bird bird4 = new Bird(){
-            @Override
-            public void sing(){
-                System.out.println("I am Bird");
-            }
-        };
-
-        bird1.sing();
-        bird2.sing();
-        bird3.sing();
-        bird4.sing();
     }
 
-    public void sing() {
-        System.out.println("I am walking");
+    public void sing(String song) {
+        System.out.println(song);
     }
 }
