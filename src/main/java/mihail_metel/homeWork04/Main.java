@@ -1,338 +1,85 @@
 package homeWork04;
 
-import java.util.*;
-
 /*
- USBank: limit of withdrawal = 1000 if currency is
- USD and 1200 if currency is EUR
- limit of funding - 10000 if EUR and no limit if USD
- monthly rate - 1% with USD and 2% with EUR
- commision - 5% if USD and up to 1000, 7% if USD and more than 1000
- 6% if EUR and up to 1000 and 8% if EUR and more than 1000
 
- EUBank: limit of withdrawal = 2000 if currency is USD and 2200 if currency is EUR
- limit of funding - 20000 if EUR and 10000 if USD
- monthly rate - 0% with USD and 1% with EUR
- commision - 5% if USD and up to 1000, 7% if USD and more than 1000
- 2% if EUR and up to 1000 and 4% if EUR and more than 1000
-
- ChinaBank: limit of withdrawal = 100 if currency is USD and 150 if currency is EUR
-
- limit of funding - 5000 if EUR and 10000 if USD
- monthly rate - 1% with USD and 0% with EUR
- commision - 3% if USD and up to 1000, 5% if USD and more than 1000
- 10% if EUR and up to 1000 and 11% if EUR and more than 1000
 */
 
 
 public class Main
 {
     public static void main(String[] args){
-        User usUser1 = new User();
-        User usUser2 = new User();
 
-    }
-}
+        BankSystemImpl bsIMpl = new BankSystemImpl();
 
-enum Currency{USD, EURO
-};
+        USBank usBank = new USBank(1, "USA", Currency.USD, 150,
+                5000, 100, 100000000000L);
+        EUBank euBank = new EUBank(2, "EU", Currency.EURO, 120,
+                3000, 200, 50000000000L);
+        ChinaBank chinaBank = new ChinaBank(3, "China", Currency.USD, 110,
+                1000, 300, 10000000000L);
 
-abstract class Bank {
-    long id;
-    String bankCountry;
-    Currency currency;
-    int numberOfEmployees;
-    double avrSalaryOfEmployee;
-    long rating;
-    long totalCapital;
+        User usUser1 = new User(1,"user1", 3000, 10, "Company1", 1500, usBank );
+        User usUser2 = new User(2,"user2", 1000, 15, "Company2", 2000, usBank );
 
-    abstract int getLimitOfWithdrawal();
-    abstract int getLimitOfFunding();
-    abstract int getMonthlyRate();
-    abstract int getCommission(int summ);
+        User euUser3 = new User(3,"user3", 6000, 12, "Company3", 2500, euBank );
+        User euUser4 = new User(4,"user4", 1500, 22, "Company4", 3500, euBank );
 
-    double moneyPaidMonthlyForSalary(){
-        System.out.println("moneyPaidMonthlyForSalary");
-        return 1;
-    }
-}
+        User chUser5 = new User(5,"user5", 1100, 8, "Company5", 1500, chinaBank );
+        User chUser6 = new User(6,"user6", 2500, 1, "Company6", 1300, chinaBank );
 
-class USBank extends Bank{
-    int limitOfWithdrawUsd = 1000;
-    int limitOfWithdrawEur = 1200;
+        /*
+        Operations
+            void withdrawOfUser(User user, int amount) throws InvalidValueException;
+            void fundUser(User user, int amount) throws InvalidValueException;
+            void transferMoney(User fromUser, User toUser, int amount) throws InvalidValueException;
+            void paySalary(User user) throws InvalidValueException;
+         */
 
-    int limitOfFundingEur = 1200;
-    int limitOfFundingUsd = 0;
+        try {
+            bsIMpl.withdrawOfUser(usUser1, 500);
+            bsIMpl.fundUser(usUser1, 1500);
+            bsIMpl.transferMoney(usUser1, usUser2, 1000);
+            bsIMpl.paySalary(usUser1);
 
-    int monthlyRateUsd = 1;
-    int monthlyRateEur = 2;
+            System.out.println(usUser1);
 
-    int commisionUsdBelow1000 = 5;
-    int commisionUsdAbove1000 = 7;
+            bsIMpl.withdrawOfUser(usUser2, 100);
+            bsIMpl.fundUser(usUser2, 5500);
+            bsIMpl.transferMoney(usUser2, usUser1, 100);
+            bsIMpl.paySalary(usUser2);
 
-    int commisionEurBelow1000 = 6;
-    int commisionEurAbove1000 = 8;
+            System.out.println(usUser2);
 
-    @Override
-    int getCommission(int summ)
-    {
-        int commissionAmount = 0;
+            bsIMpl.withdrawOfUser(euUser3, 600);
+            bsIMpl.fundUser(euUser3, 3500);
+            bsIMpl.transferMoney(euUser3, euUser4, 200);
+            bsIMpl.paySalary(euUser3);
 
-        if (summ < 0) {
-            throw new RuntimeException();
-        }
-        else if (currency == currency.EURO){
-            commissionAmount = (summ * ( (summ <= 1000)?commisionEurBelow1000:commisionEurAbove1000))/100;
-        }
-        else if (currency == currency.USD) {
-            commissionAmount = (summ * ( (summ <= 1000)?commisionUsdBelow1000:commisionUsdAbove1000))/100;
-        }
-        return commissionAmount;
-    }
+            System.out.println(euUser3);
 
-    @Override
-    int getLimitOfWithdrawal()
-    {
-        if (currency == currency.EURO){
-            return limitOfWithdrawEur;
-        }
-        else if (currency == currency.USD) {
-            return limitOfWithdrawUsd;
-        }
+            bsIMpl.withdrawOfUser(euUser4, 200);
+            bsIMpl.fundUser(euUser4, 1200);
+            bsIMpl.transferMoney(euUser4, euUser3, 1500);
+            bsIMpl.paySalary(euUser4);
 
-        return 0;
-    }
+            System.out.println(euUser4);
 
-    @Override
-    int getMonthlyRate()
-    {
-        if (currency == currency.EURO){
-            return monthlyRateEur;
-        }
-        else /*if (currency == currency.USD)*/ {
-            return monthlyRateUsd;
+            bsIMpl.withdrawOfUser(chUser5, 50);
+            bsIMpl.fundUser(chUser5, 150);
+            bsIMpl.transferMoney(chUser5, usUser1, 100);
+            bsIMpl.paySalary(chUser5);
+
+            System.out.println(chUser5);
+
+            bsIMpl.withdrawOfUser(chUser6, 200);
+            bsIMpl.fundUser(chUser6, 500);
+            bsIMpl.transferMoney(chUser6, euUser3, 10);
+            bsIMpl.paySalary(chUser6);
+
+            System.out.println(chUser6);
+
+        } catch (InvalidValueException e) {
+            System.out.println(e);
         }
     }
-
-    @Override
-    int getLimitOfFunding()
-    {
-        if (currency == currency.EURO){
-            return limitOfFundingEur;
-        }
-        else /*if (currency == currency.USD)*/ {
-            return limitOfFundingUsd;
-        }
-    }
-}
-
-
-class EUBank extends Bank{
-    int limitOfWithdrawUsd = 2000;
-    int limitOfWithdrawEur = 2200;
-
-    int limitOfFundingEur = 20000;
-    int limitOfFundingUsd = 10000;
-
-    int monthlyRateUsd = 0;
-    int monthlyRateEur = 1;
-
-    int commisionUsdBelow1000 = 5;
-    int commisionUsdAbove1000 = 7;
-
-    int commisionEurBelow1000 = 2;
-    int commisionEurAbove1000 = 4;
-
-    @Override
-    int getCommission(int summ)
-    {
-        int commissionAmount = 0;
-
-        if (summ < 0) {
-            throw new RuntimeException();
-        }
-        else if (currency == currency.EURO){
-            commissionAmount = (summ * ( (summ <= 1000)?commisionEurBelow1000:commisionEurAbove1000))/100;
-        }
-        else if (currency == currency.USD) {
-            commissionAmount = (summ * ( (summ <= 1000)?commisionUsdBelow1000:commisionUsdAbove1000))/100;
-        }
-        return commissionAmount;
-    }
-
-    @Override
-    int getLimitOfWithdrawal()
-    {
-        if (currency == currency.EURO){
-            return limitOfWithdrawEur;
-        }
-        else if (currency == currency.USD) {
-            return limitOfWithdrawUsd;
-        }
-
-        return 0;
-    }
-
-    @Override
-    int getMonthlyRate()
-    {
-        if (currency == currency.EURO){
-            return monthlyRateEur;
-        }
-        else /*if (currency == currency.USD)*/ {
-            return monthlyRateUsd;
-        }
-    }
-
-    @Override
-    int getLimitOfFunding()
-    {
-        if (currency == currency.EURO){
-            return limitOfFundingEur;
-        }
-        else /*if (currency == currency.USD)*/ {
-            return limitOfFundingUsd;
-        }
-    }
-}
-
-
-class ChinaBank extends Bank{
-    int limitOfWithdrawUsd = 100;
-    int limitOfWithdrawEur = 150;
-
-    int limitOfFundingEur = 5000;
-    int limitOfFundingUsd = 10000;
-
-    int monthlyRateUsd = 1;
-    int monthlyRateEur = 0;
-
-    int commisionUsdBelow1000 = 3;
-    int commisionUsdAbove1000 = 5;
-
-    int commisionEurBelow1000 = 10;
-    int commisionEurAbove1000 = 11;
-
-    @Override
-    int getCommission(int summ)
-    {
-        int commissionAmount = 0;
-
-        if (summ < 0) {
-            throw new RuntimeException();
-        }
-        else if (currency == currency.EURO){
-            commissionAmount = (summ * ( (summ <= 1000)?commisionEurBelow1000:commisionEurAbove1000))/100;
-        }
-        else if (currency == currency.USD) {
-            commissionAmount = (summ * ( (summ <= 1000)?commisionUsdBelow1000:commisionUsdAbove1000))/100;
-        }
-        return commissionAmount;
-    }
-
-    @Override
-    int getLimitOfWithdrawal()
-    {
-        if (currency == currency.EURO){
-            return limitOfWithdrawEur;
-        }
-        else if (currency == currency.USD) {
-            return limitOfWithdrawUsd;
-        }
-
-        return 0;
-    }
-
-    @Override
-    int getMonthlyRate()
-    {
-        if (currency == currency.EURO){
-            return monthlyRateEur;
-        }
-        else /*if (currency == currency.USD)*/ {
-            return monthlyRateUsd;
-        }
-    }
-
-    @Override
-    int getLimitOfFunding()
-    {
-        if (currency == currency.EURO){
-            return limitOfFundingEur;
-        }
-        else /*if (currency == currency.USD)*/ {
-            return limitOfFundingUsd;
-        }
-    }
-}
-
-
-class  User{
-    long id;
-    String name;
-    double balance;
-    int monthsOfEmployment;
-    String companyName;
-    int salary;
-    Bank bank;
-
-    @Override
-    public String toString()
-    {
-        // TODO: Implement this method
-        return super.toString();
-    }
-
-
-}
-
-interface BankSystem{
-    void withdrawOfUser(User user, int amount);
-    void fundUser(User user, int amount);
-    void transferMoney(User fromUser, User toUser, int amount);
-    void paySalary(User user);
-}
-
-class BankSystemImpl implements BankSystem
-{
-
-    @Override
-    public void withdrawOfUser(User user, int amount)
-    {
-        int commission;
-        commission = user.bank.getCommission(amount);
-
-        if ( (amount >= 0) && (user.balance >= commission + amount) && (amount <= user.bank.getLimitOfWithdrawal() ) ) {
-            user.balance -= (amount + commission);
-        }
-
-    }
-
-    @Override
-    public void transferMoney(User fromUser, User toUser, int amount)
-    {
-        /*int commissionFrom;
-        int commissionTo;
-
-        commissionFrom = userFrom.bank.getCommission(amount);
-
-
-        if ( (amount >= 0) && (user.balance >= commission + amount) && (amount <= user.bank.getLimitOfWithdrawal() ) ) {
-            user.balance -= (amount + commission);
-        }*/
-
-    }
-
-    @Override
-    public void fundUser(User user, int amount)
-    {
-        // TODO: Implement this method
-    }
-
-    @Override
-    public void paySalary(User user)
-    {
-        // TODO: Implement this method
-    }
-
 }

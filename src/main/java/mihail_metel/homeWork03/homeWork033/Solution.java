@@ -1,6 +1,5 @@
 package homeWork03.homeWork033;
 
-
 /*You need to create following structure of the classes.
 
         Class Course with fields: Date startDate, String name, int hoursDuration, String teacherName.
