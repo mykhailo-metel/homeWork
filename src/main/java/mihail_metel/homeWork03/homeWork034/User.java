@@ -40,6 +40,10 @@ public class User {
         this.currency = currency;
     }
 
+    private static final double comisionLow = 0.05;
+    private static final double comisionHigh = 0.1;
+    private static final int highLowBorder =1000;
+
     private String name;
     private int balance;
     private int monthsOfEmployment;
@@ -108,7 +112,8 @@ public class User {
     }
 
     public void withdraw(int summ) throws InvalidValueException {
-        double comision = (summ < 1000) ? 0.05 : 0.1;
+
+        double comision = (summ < highLowBorder) ? comisionLow : comisionHigh;
 
         if( (summ < 0) || (balance - summ * (1 + comision) < 0)){
             throw new InvalidValueException("incorect sum of withdraw");
