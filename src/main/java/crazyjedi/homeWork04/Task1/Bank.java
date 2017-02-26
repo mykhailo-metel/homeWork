@@ -1,15 +1,15 @@
 package crazyjedi.homeWork04.Task1;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.math.BigDecimal;
 
 /**
  * Created by Vlad on 15.02.2017.
  */
-public abstract class Bank {
+public class Bank {
 
-    public enum Currency {USD,EUR};
+    public enum Currency {USD, EUR}
+
+    ;
 
     private long id;
     private String bankCountry;
@@ -18,27 +18,19 @@ public abstract class Bank {
     private BigDecimal avrSalaryOfEmployee;
     private long rating;
     private BigDecimal totalCapital;
+    private TariffsModel tariffs;
 
-    public Bank(long id, String bankCountry, Currency currency, int numberOfEmployees, double avrSalaryOfEmployee
-                , long rating, long totalCapital) {
-
-        if(bankCountry.isEmpty()||bankCountry==null){
-            throw new IllegalArgumentException("Fill bank's country");
-        }
-
-        if(avrSalaryOfEmployee<0){
-            throw new IllegalArgumentException("Avg salary can't be <0.");
-        }
+    public Bank(long id, String bankCountry, Currency currency, int numberOfEmployees, BigDecimal avrSalaryOfEmployee
+            , long rating, BigDecimal totalCapital, TariffsModel tariffs) {
 
         this.id = id;
         this.bankCountry = bankCountry;
         this.currency = currency;
         this.numberOfEmployees = numberOfEmployees;
-        this.avrSalaryOfEmployee = new BigDecimal(avrSalaryOfEmployee);
-        this.avrSalaryOfEmployee.setScale(2,BigDecimal.ROUND_HALF_UP);
+        this.avrSalaryOfEmployee = MoneyBigDecimal.createMoneyDecimal(avrSalaryOfEmployee);
         this.rating = rating;
-        this.totalCapital = new BigDecimal(totalCapital);
-        this.totalCapital.setScale(2,BigDecimal.ROUND_HALF_UP);
+        this.totalCapital = MoneyBigDecimal.createMoneyDecimal(totalCapital);
+        this.tariffs = tariffs;
     }
 
     //GETTERS AND SETTERS
@@ -51,12 +43,11 @@ public abstract class Bank {
         this.id = id;
     }
 
-    public String getBankCountry() { return bankCountry;}
+    public String getBankCountry() {
+        return bankCountry;
+    }
 
     public void setBankCountry(String bankCountry) {
-        if(bankCountry.isEmpty()||bankCountry==null){
-            throw new IllegalArgumentException("Fill bank's country");
-        }
         this.bankCountry = bankCountry;
     }
 
@@ -76,12 +67,12 @@ public abstract class Bank {
         this.numberOfEmployees = numberOfEmployees;
     }
 
-    public double getAvrSalaryOfEmployee() {
-        return avrSalaryOfEmployee.doubleValue();
+    public BigDecimal getAvrSalaryOfEmployee() {
+        return avrSalaryOfEmployee;
     }
 
-    public void setAvrSalaryOfEmployee(double avrSalaryOfEmployee) {
-        this.avrSalaryOfEmployee = new BigDecimal(avrSalaryOfEmployee);
+    public void setAvrSalaryOfEmployee(BigDecimal avrSalaryOfEmployee) {
+        this.avrSalaryOfEmployee = avrSalaryOfEmployee;
     }
 
     public long getRating() {
@@ -92,20 +83,60 @@ public abstract class Bank {
         this.rating = rating;
     }
 
-    public long getTotalCapital() {
-        return totalCapital.longValue();
+    public BigDecimal getTotalCapital() {
+        return totalCapital;
     }
 
-    public void setTotalCapital(long totalCapital) {
-        this.totalCapital = new BigDecimal(totalCapital);
+    public void setTotalCapital(BigDecimal totalCapital) {
+        this.totalCapital = totalCapital;
     }
+
+    public TariffsModel getTariffs() {
+        return tariffs;
+    }
+
+    public void setTariffs(TariffsModel tariffs) {
+        this.tariffs = tariffs;
+    }
+
 
     //METHODS
 
-    abstract int getLimitOfWithdrawal();
-    abstract int getLimitOfFunding();
-    abstract int getMonthlyRate();
-    abstract int getCommission(int summ);
-    abstract double moneyPaidMonthlyForSalary();
+    public int getLimitOfWithdrawal() {
+        return this.currency == Currency.USD ? this.tariffs.getUsdWithdrawalLimit() : this.tariffs.getEuroWithdrawalLimit();
+    }
+
+    public int getLimitOfFunding() {
+        return this.currency == Currency.USD ? this.tariffs.getUsdFundingLimit() : this.tariffs.getEuroFundingLimit();
+    }
+
+    public int getMonthlyRate() {
+        return this.currency == Currency.USD ? this.tariffs.getUsdMonthlyRate() : this.tariffs.getEuroMonthlyRate();
+    }
+
+    public BigDecimal getCommission(int summ) {
+
+        if (summ < 0) {
+            throw new IllegalArgumentException("Operation amount should be >=0!");
+        }
+
+        if (summ > tariffs.getBreakingPointForPrices()) {
+            return this.currency == Currency.USD ?
+                    MoneyBigDecimal.createMoneyDecimal(summ).multiply(new BigDecimal(this.tariffs.getLargeUSDComission()))
+                    : MoneyBigDecimal.createMoneyDecimal(summ).multiply(new BigDecimal(this.tariffs.getLargeEuroComission()));
+        }
+
+        if (summ <= tariffs.getBreakingPointForPrices()) {
+            return this.currency == Currency.USD ?
+                    MoneyBigDecimal.createMoneyDecimal(summ).multiply(new BigDecimal(this.tariffs.getSmallUSDComission()))
+                    : MoneyBigDecimal.createMoneyDecimal(summ).multiply(new BigDecimal(this.tariffs.getSmallEuroComission()));
+        }
+
+        return null;
+    }
+
+    public BigDecimal moneyPaidMonthlyForSalary(){
+        return this.avrSalaryOfEmployee.multiply(new BigDecimal(this.numberOfEmployees));
+    };
 
 }
