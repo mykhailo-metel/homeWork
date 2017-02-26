@@ -1,5 +1,14 @@
 package homeWork04;
 
+//Abstract class Bank should contain fields
+//        long id
+//        String bankCountry
+//        Currency currency
+//        int numberOfEmployees
+//        double avrSalaryOfEmployee
+//        long rating
+//        long totalCapital
+
 public abstract class Bank {
     protected long id;
     protected String bankCountry;
@@ -9,14 +18,29 @@ public abstract class Bank {
     protected long rating;
     protected long totalCapital;
 
+    public Bank(long id, String bankCountry, Currency currency, int numberOfEmployees,
+                double avrSalaryOfEmployee, long rating, long totalCapital) {
+        this.id = id;
+        this.bankCountry = bankCountry;
+        this.currency = currency;
+        this.numberOfEmployees = numberOfEmployees;
+        this.avrSalaryOfEmployee = avrSalaryOfEmployee;
+        this.rating = rating;
+        this.totalCapital = totalCapital;
+    }
+
     abstract int getLimitOfWithdrawal();
     abstract int getLimitOfFunding();
     abstract int getMonthlyRate();
     abstract int getCommission(int summ);
 
     double moneyPaidMonthlyForSalary(){
-        System.out.println("moneyPaidMonthlyForSalary");
-        return 1;
+        return avrSalaryOfEmployee * numberOfEmployees;
+    }
+
+    @Override
+    public String toString(){
+        return this.getClass().toString();
     }
 
     public long getId() {

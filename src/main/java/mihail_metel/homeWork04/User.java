@@ -1,7 +1,7 @@
 package homeWork04;
 
-public class  User{
-    static private long id;
+public class User{
+    private long id;
     private String name;
     private double balance;
     private int monthsOfEmployment;
@@ -9,11 +9,26 @@ public class  User{
     private int salary;
     private Bank bank;
 
+    public User(long id, String name, double balance, int monthsOfEmployment, String companyName,
+                int salary, Bank bank) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+        this.monthsOfEmployment = monthsOfEmployment;
+        this.companyName = companyName;
+        this.salary = salary;
+        this.bank = bank;
+    }
+
     @Override
     public String toString()
     {
-        // TODO: Implement this method
-        return super.toString();
+        return "\nUser " + name +
+                "\nBalance " + balance +
+                "\nmonthsOfEmployment " + monthsOfEmployment +
+                "\ncompanyName " + companyName +
+                "\nsalary " + salary +
+                "\nbank " + bank;
     }
 
     public long getId() {
