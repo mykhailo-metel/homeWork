@@ -1,7 +1,6 @@
-package Task2_1;
+package dima_slav.homeWork02;
 
 public class CalculateMinMax {
-
     public int min(int array[]) {
         if (array.length == 0){
             throw new IllegalArgumentException("The array 1 is empty");
@@ -24,7 +23,6 @@ public class CalculateMinMax {
             if (max < array[i]) {
                 max = array[i];
             }
-
         }
         return max;
     }
@@ -55,6 +53,4 @@ public class CalculateMinMax {
         }
         return max;
     }
-
 }
-

@@ -6,7 +6,7 @@ public class Main {
         User newUser = new User("John" , 500, 6, "Google", 4500, "USD");
 
         newUser.paySalary(150);
-        newUser.withrdaw(10);
+        newUser.withdraw(10);
         System.out.println(newUser.companyNameLenght());
         newUser.monthIncreaser(7);
     }

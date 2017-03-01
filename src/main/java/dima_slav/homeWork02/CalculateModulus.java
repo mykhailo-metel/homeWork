@@ -1,14 +1,13 @@
-package Task2_1;
+package dima_slav.homeWork02;
 
 public class CalculateModulus {
-
     public  int modulus(int array[]){
         if (array.length == 0) {
             throw new IllegalArgumentException("The array 1 is empty");
         }
-            if (array[array.length - 1] == 0){
-                throw new IllegalArgumentException("Invalid value of last element of array 1 ");
-            }
+        if (array[array.length - 1] == 0){
+            throw new IllegalArgumentException("Invalid value of last element of array 1 ");
+        }
 
         int a = array[0];
         int b = array[array.length - 1];

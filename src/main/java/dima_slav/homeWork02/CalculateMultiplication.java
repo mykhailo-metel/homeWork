@@ -1,7 +1,6 @@
-package Task2_1;
+package dima_slav.homeWork02;
 
 public class CalculateMultiplication {
-
     public int multiplication(int array[]) {
         if (array.length == 0){
             throw new IllegalArgumentException("The array 1 is empty");
@@ -12,7 +11,7 @@ public class CalculateMultiplication {
         }
 
         return mult;
-}
+    }
 
     public double multiplication(double array[]) {
         if (array.length == 0){
@@ -25,5 +24,4 @@ public class CalculateMultiplication {
 
         return mult;
     }
-
 }
