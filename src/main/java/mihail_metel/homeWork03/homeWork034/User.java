@@ -4,7 +4,7 @@ public class User {
 
     public static void main(String[] args) {
         User userPetia = new User("Petia", 10000, 0,
-                "РЈРєСЂРіР°Р·РјСЏСЃ", 3000, "РіСЂРЅ" );
+                "SomeName", 3000, "UAH" );
 
         userPetia.monthIncreaser(1);
         System.out.println(userPetia.getMonthsOfEmployment());
@@ -40,6 +40,10 @@ public class User {
         this.currency = currency;
     }
 
+    private static final double comisionLow = 0.05;
+    private static final double comisionHigh = 0.1;
+    private static final int highLowBorder =1000;
+
     private String name;
     private int balance;
     private int monthsOfEmployment;
@@ -52,8 +56,8 @@ public class User {
     }
 
     public void setName(String name) throws InvalidValueException {
-        if ( (companyName == null) || (companyName.length() == 0) ){
-            throw new InvalidValueException();
+        if ( (name == null) || (name.length() == 0) ){
+            throw new InvalidValueException("incorect name");
         }
         this.name = name;
     }
@@ -82,7 +86,7 @@ public class User {
 
     public void setCompanyName(String companyName) throws InvalidValueException {
         if ( (companyName == null) || (companyName.length() == 0) ){
-            throw new InvalidValueException();
+            throw new InvalidValueException("incorect Company name");
         }
         this.companyName = companyName;
     }
@@ -108,17 +112,18 @@ public class User {
     }
 
     public void withdraw(int summ) throws InvalidValueException {
-        double comision = (summ < 1000) ? 0.05 : 0.1;
+
+        double comision = (summ < highLowBorder) ? comisionLow : comisionHigh;
 
         if( (summ < 0) || (balance - summ * (1 + comision) < 0)){
-            throw new InvalidValueException();
+            throw new InvalidValueException("incorect sum of withdraw");
         }
         balance -= summ * (1 + comision);
     }
 
     public int companyNameLenght() throws InvalidValueException {
         if ( (companyName == null) || (companyName.length() == 0) ){
-            throw new InvalidValueException();
+            throw new InvalidValueException("incorect Company name");
         }
         return companyName.length();
     }
@@ -134,9 +139,4 @@ public class User {
 
 }
 
-class InvalidValueException extends Exception{
-    @Override
-    public String toString() {
-        return "Invalid Input";
-    }
-}
+

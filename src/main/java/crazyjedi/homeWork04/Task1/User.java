@@ -1,5 +1,7 @@
 package crazyjedi.homeWork04.Task1;
 
+import com.sun.istack.internal.Nullable;
+
 import java.math.BigDecimal;
 
 /**
@@ -14,41 +16,24 @@ public class User {
     private BigDecimal salary;
     private Bank bank;
 
-    public User(long id, String name, double balance, int monthsOfEmployment
-                , String companyName, int salary, Bank bank) {
-        if(monthsOfEmployment<0){
-            throw new IllegalArgumentException("monthOfEmployment must be > 0");
-        }
-        if(balance<0){
-            throw new IllegalArgumentException("balance must be > 0");
-        }
-        if(salary<0){
-            throw new IllegalArgumentException("salary must be > 0");
-        }
-        if(bank == null){
-            throw new IllegalArgumentException("Bank should not be null");
-        }
-        if("".equals(companyName)){
-            throw new IllegalArgumentException("companyName should not be empty");
-        }
-        if("".equals(name)){
-            throw new IllegalArgumentException("name should not be empty");
-        }
-
+    public User(long id, String name, BigDecimal balance, int monthsOfEmployment
+                , String companyName, BigDecimal salary, Bank bank) {
 
         this.id = id;
         this.name = name;
-        this.balance = new BigDecimal(balance);
-        this.balance.setScale(2,BigDecimal.ROUND_HALF_UP);
+        this.balance = MoneyBigDecimal.createMoneyDecimal(balance);
         this.monthsOfEmployment = monthsOfEmployment;
         this.companyName = companyName;
-        this.salary = new BigDecimal(salary);
-        this.salary.setScale(2,BigDecimal.ROUND_HALF_UP);
+        this.salary = MoneyBigDecimal.createMoneyDecimal(salary);
         this.bank = bank;
     }
 
+
     @Override
     public String toString(){
+        if ("".equals(this.name)){
+            throw new IllegalArgumentException("Name mast be filled!");
+        }
         return String.format("User_id:\t%d;\nName:\t%s;\nBalance:\t%.2f;\nEmployed:\t%d months;\nCompany:\t%s;" +
                             "\nSalary:\t%.1f;\nBank:\t%d;",
                 this.id, this.name, this.balance.doubleValue(), this.monthsOfEmployment
@@ -69,9 +54,6 @@ public class User {
     }
 
     public void setName(String name) {
-        if("".equals(name)){
-            throw new IllegalArgumentException("name should not be empty");
-        }
         this.name = name;
     }
 
@@ -79,12 +61,8 @@ public class User {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        if(balance<0){
-            throw new IllegalArgumentException("balance must be > 0");
-        }
-        this.balance = new BigDecimal(balance);
-        this.balance.setScale(2,BigDecimal.ROUND_HALF_UP);
+    public void setBalance(BigDecimal balance) {
+        this.balance = MoneyBigDecimal.createMoneyDecimal(balance);
     }
 
     public int getMonthsOfEmployment() {
@@ -92,9 +70,6 @@ public class User {
     }
 
     public void setMonthsOfEmployment(int monthsOfEmployment) {
-        if(monthsOfEmployment<0){
-            throw new IllegalArgumentException("monthOfEmployment must be > 0");
-        }
         this.monthsOfEmployment = monthsOfEmployment;
     }
 
@@ -103,9 +78,6 @@ public class User {
     }
 
     public void setCompanyName(String companyName) {
-        if("".equals(companyName)){
-            throw new IllegalArgumentException("companyName should not be empty");
-        }
         this.companyName = companyName;
     }
 
@@ -114,11 +86,7 @@ public class User {
     }
 
     public void setSalary(double salary) {
-        if(salary<0){
-            throw new IllegalArgumentException("salary must be > 0");
-        }
-        this.salary = new BigDecimal(salary);
-        this.salary.setScale(2,BigDecimal.ROUND_HALF_UP);
+        this.salary = MoneyBigDecimal.createMoneyDecimal(salary);
     }
 
     public Bank getBank() {
@@ -126,9 +94,6 @@ public class User {
     }
 
     public void setBank(Bank bank) {
-        if(bank == null){
-            throw new IllegalArgumentException("Bank should not be null");
-        }
         this.bank = bank;
     }
 }
