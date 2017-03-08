@@ -28,12 +28,12 @@ public class BookingComAPI implements API {
     }
 
     @Override
-    public ArrayList<Room> findRooms(int price, int persons, String city, String hotel) {
-        ArrayList<Room> result = new ArrayList<Room>();
+    public Room[] findRooms(int price, int persons, String city, String hotel) {
+        Room[] result=new Room[0];
         for (Room room : rooms) {
             if (room.getPrice() == price && room.getPersons() == persons && city.equals(room.getCityName())
                     && hotel.equals(room.getHotelName())) {
-                result.add(room);
+                result=addRoomToArray(result,room);
             }
         }
         return result;
@@ -42,5 +42,20 @@ public class BookingComAPI implements API {
     @Override
     public Room[] getAllRooms() {
         return rooms;
+    }
+
+    private Room[] addRoomToArray (Room[] roomArray, Room room) {
+        int oldArrayLen = roomArray.length;
+        Room[] result;
+        if(roomArray.length>0) {
+            result = new Room[oldArrayLen + 1];
+            System.arraycopy(roomArray, 0, result, 0, oldArrayLen);
+            result[oldArrayLen] = room;
+        }
+        else{
+            result = new Room[] {room};
+        }
+
+        return result;
     }
 }

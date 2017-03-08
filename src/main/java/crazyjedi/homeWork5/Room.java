@@ -1,4 +1,5 @@
 package crazyjedi.homeWork5;
+
 import java.util.Date;
 
 /**
@@ -76,7 +77,8 @@ public class Room {
 
         Room room = (Room) o;
 
-        return price == room.price && persons == room.persons && cityName.equals(room.cityName);
+        return price == room.getPrice() && persons == room.getPersons() && cityName.equals(room.getCityName())
+                && hotelName.equals(room.getHotelName());
     }
 
     @Override
