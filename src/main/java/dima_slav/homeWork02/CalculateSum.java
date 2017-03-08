@@ -1,7 +1,6 @@
-package Task2_1;
+package dima_slav.homeWork02;
 
 public class CalculateSum {
-
     public int sum(int array[]){
         if (array.length == 0){
             throw new IllegalArgumentException("The array 1 is empty");

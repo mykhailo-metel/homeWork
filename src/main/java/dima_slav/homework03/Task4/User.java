@@ -23,7 +23,7 @@ public class User {
         System.out.println(this.balance);
     }
 
-        double withdraw(int summ) {
+       double withdraw(int summ) {
             double withdraw;
             double commission;
             if (summ < 1000) {
@@ -94,4 +94,6 @@ public class User {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
-}
+
+    }
+

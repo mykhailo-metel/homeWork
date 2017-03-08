@@ -1,7 +1,6 @@
-package Task2_1;
+package dima_slav.homeWork02;
 
 public class CalculateSecondLargest {
-
     public int secondLargest(int array[]) {
         if (array.length == 0){
             throw new IllegalArgumentException("The array 1 is empty");
@@ -20,7 +19,7 @@ public class CalculateSecondLargest {
         return maxSec;
     }
 
-    public double secondlargest(double array[]) {
+    public double secondLargest(double array[]) {
         if (array.length == 0){
             throw new IllegalArgumentException("The array 2 is empty");
         }
@@ -38,10 +37,3 @@ public class CalculateSecondLargest {
         return maxSec;
     }
 }
-
-
-
-
-
-
-

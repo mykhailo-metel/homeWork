@@ -1,5 +1,4 @@
-package Task2_1;
-
+package dima_slav.homeWork02;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,8 +32,7 @@ public class Main {
         System.out.println("The modulus result of result 2 = " + calculateModulus.modulus(arrayD));
 
         System.out.println("The second maximal value of array 1 = " + calculateSecondLargest.secondLargest(arrayI));
-        System.out.println("The second maximal value of array 2 = " + calculateSecondLargest.secondlargest(arrayD));
+        System.out.println("The second maximal value of array 2 = " + calculateSecondLargest.secondLargest(arrayD));
 
     }
-
 }
